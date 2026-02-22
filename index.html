@@ -18,9 +18,7 @@
 
 <!-- icons -->
 
-<link rel="stylesheet" 
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" 
-integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
     *{
          font-family: "Geist", sans-serif;
@@ -30,33 +28,30 @@ integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9kg2XD1r9uGqPo1cUbujc+IYdlYdEEr
 
 <body class="max-w-[1020px] w-full bg-base-200 mx-auto">
 
-  <header class="border-b-2 border-gray-300 ">
-    <section class=" mx-auto py-3 ">
-      <h2 class="text-2xl font-bold text-primary"> Job Application Tracker </h2>
-      <div class="grid grid-cols-3 gap-4 mx-auto p-[20px]">
-
-        <div class="bg-base-100 rounded-xl shadow p-2 ">
-          <p class="text-sm text-gray-500">Total</p>
-          <h3 class="text-2xl font-bold text-primary">8</h3>
-        </div>
-
-        <div class="bg-base-100 rounded-xl shadow p-2 ">
-          <p class="text-sm text-gray-500">Interview</p>
-          <h3 class="text-2xl font-bold text-success">0</h3>
-        </div>
-
-        <div class="bg-base-100 rounded-xl shadow p-2 ">
-          <p class="text-sm text-gray-500">Rejected</p>
-          <h3 class="text-2xl font-bold text-error">0</h3>
-        </div>
+ <header class="border-b-2 border-gray-300">
+  <section class="mx-auto py-3">
+    <h2 class="text-2xl font-bold text-primary">Job Application Tracker</h2>
+    <div class="grid grid-cols-3 gap-4 mx-auto p-[20px]">
+      <div class="bg-base-100 rounded-xl shadow p-2">
+        <p class="text-sm text-gray-500">Total</p>
+        <h3 id="total" class="text-2xl font-bold text-primary">0</h3>
       </div>
-    </section>
-  </header>
+      <div class="bg-base-100 rounded-xl shadow p-2">
+        <p class="text-sm text-gray-500">Interview</p>
+        <h3 id="interview" class="text-2xl font-bold text-success">0</h3>
+      </div>
+      <div class="bg-base-100 rounded-xl shadow p-2">
+        <p class="text-sm text-gray-500">Rejected</p>
+        <h3 id="rejected" class="text-2xl font-bold text-error">0</h3>
+      </div>
+    </div>
+  </section>
+</header>
 
   <section class=" mx-auto py-1 space-y-3">
     <div class="flex justify-between"> 
         <h2 class="right font-bold text-xl ">Available jobs </h2>
-        <h4 class="left text-neutral/50">8 jobs</h4>
+        <h4 id="required-job" class="left text-neutral/50">8 jobs</h4>
 </div>
 <div>
 <button class="btn btn-active btn-primary  bg-white text-primary hover:bg-primary hover:text-white text-neutral/50">All</button>
@@ -65,14 +60,15 @@ integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9kg2XD1r9uGqPo1cUbujc+IYdlYdEEr
 </div>
 </section>
 
-<section class=" mx-auto py-1 space-y-3">
- 
-     <div class="max-h-full bg-white rounded-xl shadow-sm  p-6 relative">
 
-    
-     <button class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+<section id="allcards" class=" mx-auto py-1 space-y-3" >
+ 
+     <div  class=" max-h-full bg-white rounded-xl shadow-sm  p-6 relative">
+
+  <button class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
      <i class="fa-regular fa-trash-can"></i>
     </button>
+    
 
  
     <h2 class="text-lg font-semibold text-blue-700">
@@ -88,7 +84,7 @@ integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9kg2XD1r9uGqPo1cUbujc+IYdlYdEEr
     </p>
 
    
-    <span class="inline-block bg-blue-50 text-blue-600 text-xs font-semibold px-3 py-1 rounded-md mb-4">
+    <span  class="status-badge inline-block bg-blue-50 text-blue-600 text-xs font-semibold px-3 py-1 rounded-md mb-4">
       NOT APPLIED
     </span>
 
@@ -100,13 +96,8 @@ integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9kg2XD1r9uGqPo1cUbujc+IYdlYdEEr
 
   
     <div class="flex gap-3">
-      <button class="border border-green-500 text-green-600 px-4 py-1.5 rounded-md text-sm font-medium hover:bg-green-50">
-        INTERVIEW
-      </button>
-
-      <button class="border border-red-500 text-red-600 px-4 py-1.5 rounded-md text-sm font-medium hover:bg-red-50">
-        REJECTED
-      </button>
+      <button class="btn btn-outline btn-success">INTERVIEW</button>
+      <button class="btn btn-outline btn-error">REJECTED</button>
     </div>
 
   
@@ -130,8 +121,7 @@ integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9kg2XD1r9uGqPo1cUbujc+IYdlYdEEr
       Los Angeles, CA • Part-time  <span class="font-medium">$80,000 - $120,000</span>
     </p>
 
-
-    <span class="inline-block bg-blue-50 text-blue-600 text-xs font-semibold px-3 py-1 rounded-md mb-4">
+   <span class="status-badge inline-block bg-blue-50 text-blue-600 text-xs font-semibold px-3 py-1 rounded-md mb-4">
       NOT APPLIED
     </span>
 
@@ -141,13 +131,8 @@ integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9kg2XD1r9uGqPo1cUbujc+IYdlYdEEr
     </p>
 
     <div class="flex gap-3">
-      <button class="border border-green-500 text-green-600 px-4 py-1.5 rounded-md text-sm font-medium hover:bg-green-50">
-        INTERVIEW
-      </button>
-
-      <button class="border border-red-500 text-red-600 px-4 py-1.5 rounded-md text-sm font-medium hover:bg-red-50">
-        REJECTED
-      </button>
+      <button  class="btn btn-outline btn-success">INTERVIEW</button>
+      <button class="btn btn-outline btn-error">REJECTED</button>
     </div>
 
   </div>
@@ -171,7 +156,7 @@ integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9kg2XD1r9uGqPo1cUbujc+IYdlYdEEr
       Boston, MA  • Full-time  •<span class="font-medium">$130,000 – $175,000</span>
     </p>
 
-    <span class="inline-block bg-blue-50 text-blue-600 text-xs font-semibold px-3 py-1 rounded-md mb-4">
+    <span class="status-badge inline-block bg-blue-50 text-blue-600 text-xs font-semibold px-3 py-1 rounded-md mb-4">
       NOT APPLIED
     </span>
 
@@ -180,13 +165,8 @@ integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9kg2XD1r9uGqPo1cUbujc+IYdlYdEEr
     </p>
 
     <div class="flex gap-3">
-      <button class="border border-green-500 text-green-600 px-4 py-1.5 rounded-md text-sm font-medium hover:bg-green-50">
-        INTERVIEW
-      </button>
-
-      <button class="border border-red-500 text-red-600 px-4 py-1.5 rounded-md text-sm font-medium hover:bg-red-50">
-        REJECTED
-      </button>
+     <button class="btn btn-outline btn-success">INTERVIEW</button> 
+      <button class="btn btn-outline btn-error">REJECTED</button>
     </div>
 
   </div>
@@ -208,7 +188,7 @@ integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9kg2XD1r9uGqPo1cUbujc+IYdlYdEEr
     </p>
 
 
-    <span class="inline-block bg-blue-50 text-blue-600 text-xs font-semibold px-3 py-1 rounded-md mb-4">
+    <span class="status-badge inline-block bg-blue-50 text-blue-600 text-xs font-semibold px-3 py-1 rounded-md mb-4">
       NOT APPLIED
     </span>
 
@@ -217,13 +197,8 @@ integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9kg2XD1r9uGqPo1cUbujc+IYdlYdEEr
     </p>
 
     <div class="flex gap-3">
-      <button class="border border-green-500 text-green-600 px-4 py-1.5 rounded-md text-sm font-medium hover:bg-green-50">
-        INTERVIEW
-      </button>
-
-      <button class="border border-red-500 text-red-600 px-4 py-1.5 rounded-md text-sm font-medium hover:bg-red-50">
-        REJECTED
-      </button>
+      <button class="btn btn-outline btn-success">INTERVIEW</button> 
+      <button class="btn btn-outline btn-error">REJECTED</button>
     </div>
 
   </div>
@@ -245,7 +220,7 @@ integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9kg2XD1r9uGqPo1cUbujc+IYdlYdEEr
  <span class="font-medium"> $110,000 - $150,000</span>
     </p>
 
-    <span class="inline-block bg-blue-50 text-blue-600 text-xs font-semibold px-3 py-1 rounded-md mb-4">
+    <span class="status-badge inline-block bg-blue-50 text-blue-600 text-xs font-semibold px-3 py-1 rounded-md mb-4">
       NOT APPLIED
     </span>
 
@@ -254,13 +229,8 @@ integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9kg2XD1r9uGqPo1cUbujc+IYdlYdEEr
     </p>
 
     <div class="flex gap-3">
-      <button class="border border-green-500 text-green-600 px-4 py-1.5 rounded-md text-sm font-medium hover:bg-green-50">
-        INTERVIEW
-      </button>
-
-      <button class="border border-red-500 text-red-600 px-4 py-1.5 rounded-md text-sm font-medium hover:bg-red-50">
-        REJECTED
-      </button>
+     <button class="btn btn-outline btn-success">INTERVIEW</button> 
+      <button class="btn btn-outline btn-error">REJECTED</button>
     </div>
 
   </div>
@@ -282,7 +252,7 @@ integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9kg2XD1r9uGqPo1cUbujc+IYdlYdEEr
      New York, NY· Full-time · <span class="font-medium"> $130,000 - $170,00</span>
     </p>
 
-    <span class="inline-block bg-blue-50 text-blue-600 text-xs font-semibold px-3 py-1 rounded-md mb-4">
+    <span class="status-badge inline-block bg-blue-50 text-blue-600 text-xs font-semibold px-3 py-1 rounded-md mb-4">
       NOT APPLIED
     </span>
 
@@ -291,13 +261,8 @@ integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9kg2XD1r9uGqPo1cUbujc+IYdlYdEEr
     </p>
 
     <div class="flex gap-3">
-      <button class="border border-green-500 text-green-600 px-4 py-1.5 rounded-md text-sm font-medium hover:bg-green-50">
-        INTERVIEW
-      </button>
-
-      <button class="border border-red-500 text-red-600 px-4 py-1.5 rounded-md text-sm font-medium hover:bg-red-50">
-        REJECTED
-      </button>
+     <button class="btn btn-outline btn-success">INTERVIEW</button> 
+      <button class="btn btn-outline btn-error">REJECTED</button>
     </div>
 
   </div>
@@ -319,7 +284,7 @@ integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9kg2XD1r9uGqPo1cUbujc+IYdlYdEEr
       Remote · Full-time · <span class="font-medium">$120,000 - $160,000</span>
     </p>
 
-    <span class="inline-block bg-blue-50 text-blue-600 text-xs font-semibold px-3 py-1 rounded-md mb-4">
+    <span class="status-badge inline-block bg-blue-50 text-blue-600 text-xs font-semibold px-3 py-1 rounded-md mb-4">
       NOT APPLIED
     </span>
 
@@ -328,13 +293,8 @@ integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9kg2XD1r9uGqPo1cUbujc+IYdlYdEEr
     </p>
 
     <div class="flex gap-3">
-      <button class="border border-green-500 text-green-600 px-4 py-1.5 rounded-md text-sm font-medium hover:bg-green-50">
-        INTERVIEW
-      </button>
-
-      <button class="border border-red-500 text-red-600 px-4 py-1.5 rounded-md text-sm font-medium hover:bg-red-50">
-        REJECTED
-      </button>
+   <button class="btn btn-outline btn-success">INTERVIEW</button> 
+      <button class="btn btn-outline btn-error">REJECTED</button>
     </div>
 
   </div>
@@ -356,7 +316,7 @@ integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9kg2XD1r9uGqPo1cUbujc+IYdlYdEEr
       San Francisco, CA · Full-time · <span class="font-medium">$130,000 - $175,000</span>
     </p>
 
-    <span class="inline-block bg-blue-50 text-blue-600 text-xs font-semibold px-3 py-1 rounded-md mb-4">
+    <span class="status-badge inline-block bg-blue-50 text-blue-600 text-xs font-semibold px-3 py-1 rounded-md mb-4">
       NOT APPLIED
     </span>
 
@@ -365,13 +325,8 @@ integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9kg2XD1r9uGqPo1cUbujc+IYdlYdEEr
     </p>
 
     <div class="flex gap-3">
-      <button class="border border-green-500 text-green-600 px-4 py-1.5 rounded-md text-sm font-medium hover:bg-green-50">
-        INTERVIEW
-      </button>
-
-      <button class="border border-red-500 text-red-600 px-4 py-1.5 rounded-md text-sm font-medium hover:bg-red-50">
-        REJECTED
-      </button>
+     <button class="btn btn-outline btn-success">INTERVIEW</button> 
+      <button class="btn btn-outline btn-error">REJECTED</button>
     </div>
 
   </div>
@@ -379,6 +334,7 @@ integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9kg2XD1r9uGqPo1cUbujc+IYdlYdEEr
 </section>
 
 
-
+    
+<script src="script/script.js"></script>
 </body>
 </html>
