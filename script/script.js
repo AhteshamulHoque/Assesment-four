@@ -32,30 +32,37 @@ document.addEventListener("DOMContentLoaded", function () {
         rejectedEl.textContent = rejectedCount;
         requiredJobEl.textContent = total + " jobs";
     }
+    
+function filterCards(status) {
+    currentTab = status; 
+    let cards = allCardsContainer.children;
+    let visibleCount = 0;
+    let totalCards = cards.length; 
 
-    function filterCards(status) {
-        currentTab = status; 
-        let cards = allCardsContainer.children;
-        let visibleCount = 0;
+    for (let i = 0; i < cards.length; i++) {
+        let cardStatus = cards[i].getAttribute("data-status");
+        let isVisible = (status === "All") || (cardStatus === status);
 
-        for (let i = 0; i < cards.length; i++) {
-            let cardStatus = cards[i].getAttribute("data-status");
-            let isVisible = (status === "All") || (cardStatus === status);
-
-            if (isVisible) {
-                cards[i].style.display = "block";
-                visibleCount++;
-            } else {
-                cards[i].style.display = "none";
-            }
-        }
-
-        if (visibleCount === 0) {
-            noJobsMessage.classList.remove("hidden");
+        if (isVisible) {
+            cards[i].style.display = "block";
+            visibleCount++;
         } else {
-            noJobsMessage.classList.add("hidden");
+            cards[i].style.display = "none";
         }
     }
+
+    if (status === "All") {
+        requiredJobEl.textContent = totalCards + " jobs";
+    } else {
+        requiredJobEl.textContent = visibleCount + " of " + totalCards + " jobs";
+    }
+
+    if (visibleCount === 0) {
+        noJobsMessage.classList.remove("hidden");
+    } else {
+        noJobsMessage.classList.add("hidden");
+    }
+}
 
     function setupCardEvents(card) {
         if (!card.getAttribute("data-status")) {
