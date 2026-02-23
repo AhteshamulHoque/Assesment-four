@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
         rejectedEl.textContent = rejectedCount;
         requiredJobEl.textContent = total + " jobs";
     }
-    
+
 function filterCards(status) {
     currentTab = status; 
     let cards = allCardsContainer.children;
